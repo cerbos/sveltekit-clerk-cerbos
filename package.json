@@ -23,7 +23,10 @@
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "cerbos": "cerbos server --config ./cerbos/config.yaml",
+    "cerbos:docker": "docker run --rm --name cerbos -it -v $(pwd)/cerbos/policies:/policies -p 3592:3592 -p 3593:3593  ghcr.io/cerbos/cerbos:0.22.0",
+    "cerbos:docker:win": "docker run --rm --name cerbos -it -v  %cd%/cerbos/policies:/policies -p 3592:3592 -p 3593:3593  ghcr.io/cerbos/cerbos:0.22.0"
   },
   "devDependencies": {
     "@babel/core": "7.19.6",

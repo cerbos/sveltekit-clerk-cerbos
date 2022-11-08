@@ -1,0 +1,10 @@
+---
+server:
+  httpListenAddr: ':3592'
+  grpcListenAddr: ':3593'
+
+storage:
+  driver: 'disk' # Valid values are "disk" or "git"
+  disk: # Only required if "driver" is "disk"
+    directory: ./cerbos/policies
+    watchForChanges: true
