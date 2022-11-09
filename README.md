@@ -48,7 +48,7 @@ https://clerk.dev/docs/authentication/set-up-your-application
 
 There are 2 environment variables from Clerk's SDK that need to be set for this demo to work.
 
-There is a `.env.local.sample` file in the root of the project that you can copy and rename to `.env.local` and add your Clerk API keys to.
+There is a `.env.local.example` file in the root of the project that you can copy and rename to `.env.local` and add your Clerk API keys to.
 
 ```sh
 # .env.local
