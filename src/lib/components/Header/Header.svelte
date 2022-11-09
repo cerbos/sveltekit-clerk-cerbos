@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { UserButton } from '$lib/components/clerk';
+</script>
+
 <header>
   <div class="left">
     <a class="logo" href="/">
@@ -6,9 +10,12 @@
     </a>
   </div>
   <div class="right">
+    <UserButton />
+
     <a href="/sign-in">Sign in</a>
+
     <!-- <SignedOut>
-      <a href="/sign-in">Sign in</a>
+
     </SignedOut>
     <SignedIn>
       <UserButton userProfileURL="/user" afterSignOutAll="/" />
@@ -41,9 +48,9 @@
     align-items: center;
   }
 
-  .right > :not(:first-child) {
-    margin-left: 1rem;
-  }
+  // .right > :not(:first-child) {
+  //   margin-left: 1rem;
+  // }
 
   @media screen and (min-width: 768px) {
     header {

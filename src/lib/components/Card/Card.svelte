@@ -71,12 +71,19 @@
     background: transparent;
     border: none;
     display: grid;
-    grid-template-columns: 24px 1fr;
+    grid-template-columns: 24px 1fr 24px;
     gap: 1em;
     padding: 1.5em 1em;
     text-align: left;
     color: inherit;
     text-decoration: none;
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
   .icon,
@@ -94,13 +101,6 @@
     .card:focus,
     .card:active {
       display: block;
-    }
-
-    .card .action {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
     }
 
     .cardContent {

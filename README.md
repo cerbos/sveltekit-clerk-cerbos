@@ -52,7 +52,7 @@ There is a `.env.local.example` file in the root of the project that you can cop
 
 ```sh
 # .env.local
-VITE_PUBLIC_CLERK_FRONTEND_API=your-frontend-api
+PUBLIC_CLERK_FRONTEND_API=your-frontend-api
 CLERK_API_KEY=your-api-key
 ```
 

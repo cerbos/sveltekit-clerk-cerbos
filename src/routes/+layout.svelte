@@ -1,7 +1,6 @@
 <script lang="ts">
   import Header from '$lib/components/Header/Header.svelte';
   import Footer from '$lib/components/Footer/Footer.svelte';
-  import './styles.scss';
   import { page } from '$app/stores';
 </script>
 
@@ -9,14 +8,14 @@
 <div class="container">
   <main>
     <slot />
-    <div style="width: 800px" />
   </main>
 </div>
 {#if !$page.data.noFooter}
   <Footer />
 {/if}
 
-<style lang="scss">
+<style lang="scss" global>
+  @import './styles.scss';
   .container {
     padding: 0;
     display: flex;
@@ -27,8 +26,11 @@
   }
 
   main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     max-width: 800px;
-    padding-top: 2rem;
+    padding: 2rem 0 4rem 0;
     flex: 1;
     margin: 0 auto;
   }
