@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { UserButton } from '$lib/components/clerk';
+  import { UserButton } from '$lib/clerk-svelte';
 </script>
 
 <header>

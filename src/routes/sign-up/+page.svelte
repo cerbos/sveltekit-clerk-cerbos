@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { SignUp } from '$lib/components/clerk';
+  import { SignUp } from '$lib/clerk-svelte';
 </script>
 
 <SignUp />

@@ -1,7 +1,13 @@
 <script lang="ts">
+  import { setContext } from 'svelte';
   import Header from '$lib/components/Header/Header.svelte';
   import Footer from '$lib/components/Footer/Footer.svelte';
   import { page } from '$app/stores';
+  import { PUBLIC_CLERK_FRONTEND_API } from '$env/static/public';
+  import { createClerkStore } from '$lib/clerk-svelte';
+
+  const clearkStore = createClerkStore(PUBLIC_CLERK_FRONTEND_API);
+  setContext('clerk', clearkStore);
 </script>
 
 <Header />
