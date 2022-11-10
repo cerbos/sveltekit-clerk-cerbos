@@ -1,5 +1,6 @@
 <script lang="ts">
   import Card from '$lib/components/Card/Card.svelte';
+  import Prism from './Prism.svelte';
   import { getClerkStore } from '$lib/clerk-svelte';
 
   interface Contact {
@@ -81,6 +82,10 @@ export default requireSession(async (req, res) => {
 });
 `;
   let response: Promise<{ resource: Contact; actions: Actions; validationErrors: unknown[] }[]>;
+  let tableResults: { resource: Contact; actions: Actions; validationErrors: unknown[] }[];
+  $: response?.then((data) => {
+    tableResults = data;
+  });
 
   const makeRequest = (e: Event) => {
     e.preventDefault();
@@ -151,8 +156,8 @@ export default requireSession(async (req, res) => {
     >
   </h4>
 
-  {#if response}
-    {#await response then authz}
+  {#if tableResults}
+    {#await tableResults then authz}
       <table>
         <thead>
           <tr>
@@ -176,18 +181,20 @@ export default requireSession(async (req, res) => {
     {/await}
   {/if}
 
-  <pre><!--
-    --><code class="language-js"
-      >{#if !response}// Click above to run the request{:else}{#await response}// Loading...{:then responseJSON}{JSON.stringify(
-            responseJSON,
-            null,
-            2
-          )}{:catch error}// There was an error with the request. Please contact support@clerk.dev{/await}{/if}</code
-    ><!--
-  --></pre>
+  {#if !response}
+    <Prism source="// Click above to run the request" />
+  {:else}
+    {#await response}
+      <Prism source="// Loading..." />
+    {:then responseJSON}
+      <Prism source={JSON.stringify(responseJSON, null, 2)} />
+    {:catch error}
+      <Prism source="// There was an error with the request. Please contact support@clerk.dev" />
+    {/await}
+  {/if}
 
   <h4>/api/getResources</h4>
-  <pre><code class="language-js">{apiSample}</code></pre>
+  <Prism source={apiSample} />
 </div>
 
 <style lang="scss">
@@ -196,10 +203,6 @@ export default requireSession(async (req, res) => {
   }
   h2 {
     text-align: center;
-  }
-  pre {
-    font-size: 80%;
-    border-radius: 0.5rem;
   }
   h4 {
     margin-bottom: 0;

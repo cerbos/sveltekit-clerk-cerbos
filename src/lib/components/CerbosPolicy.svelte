@@ -1,3 +1,7 @@
+<script lang="ts">
+  import Prism from './Prism.svelte';
+</script>
+
 <div class="cerbos-policy">
   <h2>Example Cerbos Policy</h2>
   <p>A sample policy deployed with which states that:</p>
@@ -16,9 +20,9 @@
       and <b>delete</b> actions.
     </li>
   </ul>
-  <pre><!--
-    --><code class="language-yaml"
-      >---
+  <Prism
+    language="plain"
+    source={`---
 apiVersion: api.cerbos.dev/v1
 resourcePolicy:
 version: default
@@ -41,9 +45,8 @@ rules:
     - user
   condition:
     match:
-      expr: request.resource.attr.owner == request.principal.id
-    </code><!--
-  --></pre>
+      expr: request.resource.attr.owner == request.principal.id`}
+  />
 </div>
 
 <style lang="scss">
@@ -53,9 +56,5 @@ rules:
   }
   h2 {
     text-align: center;
-  }
-  pre {
-    font-size: 80%;
-    border-radius: 0.5rem;
   }
 </style>
