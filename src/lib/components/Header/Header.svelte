@@ -5,21 +5,13 @@
 <header>
   <div class="left">
     <a class="logo" href="/">
-      <img src="/logo.svg" width="32" height="32" alt="Logo" />
+      <img src="/cerbie.svg" width="32" height="32" alt="Logo" />
       <span class="appName">Clerk + Cerbos Demo SvelteKit App</span>
     </a>
   </div>
   <div class="right">
     <UserButton />
-
     <a href="/sign-in">Sign in</a>
-
-    <!-- <SignedOut>
-
-    </SignedOut>
-    <SignedIn>
-      <UserButton userProfileURL="/user" afterSignOutAll="/" />
-    </SignedIn> -->
   </div>
 </header>
 
