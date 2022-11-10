@@ -12,7 +12,7 @@
       </div>
       <div>
         <h3>{title}</h3>
-        <slot />
+        <div class="card-content"><slot /></div>
       </div>
       <div class="action">
         <slot name="action" />
@@ -27,6 +27,16 @@
     border: 2px solid #fff;
     border-radius: 0.5em;
     transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .card-content {
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #808080;
+  }
+
+  .card-content :global(p) {
+    margin: 0;
   }
 
   .loading {

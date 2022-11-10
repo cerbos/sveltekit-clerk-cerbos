@@ -36,7 +36,7 @@
     flex-direction: column;
     justify-content: flex-start;
     max-width: 800px;
-    padding: 2rem 0 4rem 0;
+    padding-top: 2rem;
     flex: 1;
     margin: 0 auto;
   }
