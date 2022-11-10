@@ -32,6 +32,7 @@
   {/if}
 </div>
 
+<div style="width: 800px" />
 <!-- <SignedIn>
   <CerbosPolicy />
   <CerbosDemo />
