@@ -2,8 +2,11 @@
   import { getClerkStore } from '$lib/clerk-svelte';
   import DocsLink from '$lib/components/DocsLink/DocsLink.svelte';
   import Card from '$lib/components/Card/Card.svelte';
+  import CerbosPolicy from '$lib/components/CerbosPolicy.svelte';
+  import CerbosDemo from '$lib/components/CerbosDemo.svelte';
 
   const clerk = getClerkStore();
+  $: signedIn = !!$clerk?.user;
 </script>
 
 <h1>Clerk + Cerbos Demo App</h1>
@@ -12,10 +15,10 @@
 </p>
 
 <div class="cards">
-  {#if $clerk?.user}
+  {#if signedIn}
     <Card on:click={() => $clerk?.openUserProfile()} title="Manage your Clerk user profile">
       <img slot="icon" src="/icons/layout.svg" alt="" />
-      <p class="card-content">
+      <p>
         Interact with the user button, user profile, and more to preview what your users will see
       </p>
       <img slot="action" src="/icons/arrow-right.svg" alt="" />
@@ -23,7 +26,7 @@
   {:else}
     <Card href="/sign-up" title="Log in/Sign up for an account" loading={!$clerk}>
       <img slot="icon" src="/icons/user-plus.svg" alt="" />
-      <p class="card-content">
+      <p>
         Login to your account or sign up for a new account maanged by Clerk.dev. This will provide
         your identity which will be used by Cerbos for authorization.
       </p>
@@ -32,11 +35,10 @@
   {/if}
 </div>
 
-<div style="width: 800px" />
-<!-- <SignedIn>
+{#if signedIn}
   <CerbosPolicy />
   <CerbosDemo />
-</SignedIn> -->
+{/if}
 
 <div class="links">
   <DocsLink
@@ -68,17 +70,6 @@
     height: 3.5rem;
     align-items: center;
     justify-content: space-between;
-  }
-
-  .cards {
-    margin: 2rem;
-  }
-
-  .card-content {
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.25;
-    color: #808080;
   }
 
   @media screen and (min-width: 768px) {

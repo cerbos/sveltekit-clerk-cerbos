@@ -20,7 +20,7 @@
 <style lang="scss">
   footer {
     color: #808080;
-    margin: 4em auto;
+    margin: 4rem auto;
     display: flex;
     justify-content: center;
     align-items: center;
