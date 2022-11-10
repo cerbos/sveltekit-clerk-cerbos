@@ -4,12 +4,6 @@ This example shows how to use [Clerk](https://www.clerk.dev/?utm_source=github&u
 
 The example features adding sign up, sign in, profile management, and an authenticated API route to your SvelteKit application, using **[Cerbos](https://cerbos.dev)** to authorize access.
 
-## Demo
-
-A hosted demo of this example is available at ???
-
-_\*\***NOTE: update once demo is publically deployed**\*\*_
-
 ## Table of Contents
 
 - [Clerk, Cerbos and SvelteKit Example](#clerk--cerbos-and-sveltekit-example)
@@ -30,10 +24,9 @@ _\*\***NOTE: update once demo is publically deployed**\*\*_
 
 ### 1. Clone the repository
 
-\*\*_**NOTE: UPDATE WITH FINAL REPO**_\*\*
-
 ```bash
-git clone https://github.com/thisdot/cerbos-svelte-starter.git
+git clone  https://github.com/cerbos/svelte-clerk-cerbos.git
+# note: update with final repo
 ```
 
 Then `cd` into the project directory and run `npm install` to install the dependencies.
