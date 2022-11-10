@@ -1,4 +1,5 @@
 # Clerk, Cerbos and SvelteKit Example
+
 This example shows how to use [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=sveltekit_starter) with [Cerbos](https://cerbos.dev) in a [SvelteKit](https://kit.svelte.dev/) application.
 
 The example features adding sign up, sign in, profile management, and an authenticated API route to your SvelteKit application, using **[Cerbos](https://cerbos.dev)** to authorize access.
@@ -12,25 +13,25 @@ _\*\***NOTE: update once demo is publically deployed**\*\*_
 ## Table of Contents
 
 - [Clerk, Cerbos and SvelteKit Example](#clerk--cerbos-and-sveltekit-example)
-  * [How to Run the Example](#how-to-run-the-example)
-    + [1. Clone the repository](#1-clone-the-repository)
-    + [2. Set up your Clerk account and project](#2-set-up-your-clerk-account-and-project)
-    + [3. Add your ENV variables to an `env.local` at the root of the project](#3-add-your-env-variables-to-an-envlocal-at-the-root-of-the-project)
-    + [4. Start Cerbos locally](#4-start-cerbos-locally)
-    + [5. Start the demo locally](#5-start-the-demo-locally)
-    + [6. Check out the example implementation](#6-check-out-the-example-implementation)
-  * [Overview](#overview)
-    + [Tech Stack](#tech-stack)
-    + [Included Tooling](#included-tooling)
-  * [Commands](#commands)
-  * [Learn More](#learn-more)
-
+  - [How to Run the Example](#how-to-run-the-example)
+    - [1. Clone the repository](#1-clone-the-repository)
+    - [2. Set up your Clerk account and project](#2-set-up-your-clerk-account-and-project)
+    - [3. Add your ENV variables to an `env.local` at the root of the project](#3-add-your-env-variables-to-an-envlocal-at-the-root-of-the-project)
+    - [4. Start Cerbos locally](#4-start-cerbos-locally)
+    - [5. Start the demo locally](#5-start-the-demo-locally)
+    - [6. Check out the example implementation](#6-check-out-the-example-implementation)
+  - [Overview](#overview)
+    - [Tech Stack](#tech-stack)
+    - [Included Tooling](#included-tooling)
+  - [Commands](#commands)
+  - [Learn More](#learn-more)
 
 ## How to Run the Example
 
 ### 1. Clone the repository
 
 \*\*_**NOTE: UPDATE WITH FINAL REPO**_\*\*
+
 ```bash
 git clone https://github.com/thisdot/cerbos-svelte-starter.git
 ```
@@ -47,11 +48,11 @@ https://clerk.dev/docs/authentication/set-up-your-application
 
 There are 2 environment variables from Clerk's SDK that need to be set for this demo to work.
 
-There is a `.env.local.sample` file in the root of the project that you can copy and rename to `.env.local` and add your Clerk API keys to.
+There is a `.env.local.example` file in the root of the project that you can copy and rename to `.env.local` and add your Clerk API keys to.
 
 ```sh
 # .env.local
-VITE_PUBLIC_CLERK_FRONTEND_API=your-frontend-api
+PUBLIC_CLERK_FRONTEND_API=your-frontend-api
 CLERK_API_KEY=your-api-key
 ```
 
@@ -64,10 +65,10 @@ you'll have to start **Cerbos** separately, from the app.
 
 **If you have [Docker](https://www.docker.com/) installed**: you can simply run the npm run script `cerbos:docker` from the root of the project to start **Cerbos** in a container.
 
-
 ```bash
 npm run cerbos:docker
 ```
+
 _(on windows you may need to run `npm run cerbos:docker:win`)_
 
 **If you DON'T have docker installed**: you can install the Cerbos binary locally using one of [installation methods for your system described in our docs](https://docs.cerbos.dev/cerbos/latest/installation/index.html), including an option for using `Homebrew` if you're on a Mac.
@@ -80,7 +81,7 @@ npm run cerbos
 
 Which will use the config at `./cerbos/cerbos.yaml` to start Cerbos.
 
-The `cerbos/policies` directory contains the policies that will be loaded into Cerbos when it starts.  You can edit these policies to see how they affect the behavior of the app.
+The `cerbos/policies` directory contains the policies that will be loaded into Cerbos when it starts. You can edit these policies to see how they affect the behavior of the app.
 
 ### 5. Start the demo locally
 
@@ -112,7 +113,6 @@ Our [SvelteKit](https://kit.svelte.dev/) application will connect with Clerk for
 
 The policies is defined in the `cerbos/policies` directory. Each policy is authored in the a very human-readable format which you can learn more about at the [Cerbos Policy documentation site](https://docs.cerbos.dev/cerbos/latest/policies), and for the demo revolves around access to a `contacts` resource.
 
-
 ### Tech Stack
 
 - [Cerbos](https://cerbos.dev)
@@ -134,12 +134,8 @@ The policies is defined in the `cerbos/policies` directory. Each policy is autho
 
 - `npm run dev` - Starts the development server.
 - `npm run cerbos:docker` - Starts the Cerbos service in Docker.
-- `npm run test` - Runs the unit tests.
-- `npm run test:e2e` - Runs the playwright e2e tests.
-- `npm run storybook` - Starts the Storybook UI.
 - `npm run format` - Formats code with prettier for the entire project.
 - `npm run build` - Builds the project for production.
-- `npm run start` - Starts the dev server new tab.
 
 ## Learn More
 
