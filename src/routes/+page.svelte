@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getClerkStore } from '$lib/clerk-svelte';
-  import DocsLink from '$lib/components/DocsLink/DocsLink.svelte';
-  import Card from '$lib/components/Card/Card.svelte';
+  import DocsLink from '$lib/components/DocsLink.svelte';
+  import Card from '$lib/components/Card.svelte';
   import CerbosPolicy from '$lib/components/CerbosPolicy.svelte';
   import CerbosDemo from '$lib/components/CerbosDemo.svelte';
 

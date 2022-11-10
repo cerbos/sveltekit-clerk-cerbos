@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Card from '$lib/components/Card/Card.svelte';
+  import Card from '$lib/components/Card.svelte';
   import Prism from './Prism.svelte';
   import { getClerkStore } from '$lib/clerk-svelte';
 
