@@ -1,6 +1,9 @@
 <script lang="ts">
+  import { getClerkStore } from '$lib/clerk-svelte';
   import DocsLink from '$lib/components/DocsLink/DocsLink.svelte';
   import Card from '$lib/components/Card/Card.svelte';
+
+  const clerk = getClerkStore();
 </script>
 
 <h1>Clerk + Cerbos Demo App</h1>
@@ -9,19 +12,24 @@
 </p>
 
 <div class="cards">
-  <!-- <SignedIn>
-      <ClerkFeatures />
-    </SignedIn>
-    <SignedOut> -->
-  <Card href="/sign-up" title="Log in/Sign up for an account">
-    <img slot="icon" src="/icons/user-plus.svg" alt="" />
-    <p class="card-content">
-      Login to your account or sign up for a new account maanged by Clerk.dev. This will provide
-      your identity which will be used by Cerbos for authorization.
-    </p>
-    <img slot="action" src="/icons/arrow-right.svg" alt="" />
-  </Card>
-  <!-- </SignedOut> -->
+  {#if $clerk?.user}
+    <Card on:click={() => $clerk?.openUserProfile()} title="Manage your Clerk user profile">
+      <img slot="icon" src="/icons/layout.svg" alt="" />
+      <p class="card-content">
+        Interact with the user button, user profile, and more to preview what your users will see
+      </p>
+      <img slot="action" src="/icons/arrow-right.svg" alt="" />
+    </Card>
+  {:else}
+    <Card href="/sign-up" title="Log in/Sign up for an account" loading={!$clerk}>
+      <img slot="icon" src="/icons/user-plus.svg" alt="" />
+      <p class="card-content">
+        Login to your account or sign up for a new account maanged by Clerk.dev. This will provide
+        your identity which will be used by Cerbos for authorization.
+      </p>
+      <img slot="action" src="/icons/arrow-right.svg" alt="" />
+    </Card>
+  {/if}
 </div>
 
 <!-- <SignedIn>

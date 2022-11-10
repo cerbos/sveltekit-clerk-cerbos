@@ -1,12 +1,12 @@
 <script lang="ts">
-  export let href: string | null | undefined;
+  export let href: string | null | undefined = undefined;
   export let title: string | undefined;
   export let loading = false;
 </script>
 
 <div class="card" class:loading>
   {#if !loading}
-    <a {href} class="cardContent">
+    <a {href} class="cardContent" on:click>
       <div class="icon">
         <slot name="icon" />
       </div>

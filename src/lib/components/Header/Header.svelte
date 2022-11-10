@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { UserButton } from '$lib/clerk-svelte';
+  import { UserButton, getClerkStore } from '$lib/clerk-svelte';
+  const clerk = getClerkStore();
 </script>
 
 <header>
@@ -10,8 +11,11 @@
     </a>
   </div>
   <div class="right">
-    <UserButton />
-    <a href="/sign-in">Sign in</a>
+    {#if $clerk?.user}
+      <UserButton />
+    {:else if $clerk}
+      <a href="/sign-in">Sign in</a>
+    {/if}
   </div>
 </header>
 
@@ -39,10 +43,6 @@
     display: flex;
     align-items: center;
   }
-
-  // .right > :not(:first-child) {
-  //   margin-left: 1rem;
-  // }
 
   @media screen and (min-width: 768px) {
     header {

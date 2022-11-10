@@ -1,14 +1,13 @@
 <script lang="ts">
-  import { getContext } from 'svelte';
-  import { clerkui } from '$lib/clerk-svelte';
-  import type { Readable } from 'svelte/store';
-  import type Clerk from '@clerk/clerk-js';
-
-  const clerkStore = getContext<Readable<Clerk> | undefined>('clerk');
-  $: clerk = $clerkStore;
+  import { clerkui, getClerkStore } from '$lib/clerk-svelte';
+  const clerk = getClerkStore();
 </script>
 
-<div class="sign-in" class:loading={!clerk} use:clerkui={{ clerk, componentType: 'SignIn' }} />
+<div
+  class="sign-in"
+  class:loading={!$clerk}
+  use:clerkui={{ clerk: $clerk, componentType: 'SignIn' }}
+/>
 
 <style lang="scss">
   .loading {
