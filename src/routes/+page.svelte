@@ -48,6 +48,7 @@
 
   .description {
     margin-top: 0.5rem;
+    margin-bottom: 0;
     color: #808080;
     text-align: center;
   }

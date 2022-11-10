@@ -93,7 +93,6 @@
 
   @media screen and (min-width: 768px) {
     .card {
-      margin-bottom: 1rem;
       border-color: #f2f2f2;
     }
 
