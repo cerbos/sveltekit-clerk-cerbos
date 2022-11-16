@@ -5,7 +5,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   const sessionToken = event.cookies.get('__session');
   if (sessionToken) {
     try {
-      const session = await verifySession();
+      const session = await verifySession(sessionToken);
       if (session) {
         event.locals.session = session;
       }

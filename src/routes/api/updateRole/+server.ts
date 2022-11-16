@@ -7,10 +7,10 @@ export const POST: RequestHandler = async ({ locals, request }) => {
     return json({ ok: false, error: 'Users Session not found' });
   }
   const body = await request.json();
-  users.updateUser(locals.session.userId, {
+  const user = await users.updateUser(locals.session.userId, {
     publicMetadata: {
       role: body.role,
     },
   });
-  return json({ ok: true });
+  return json({ ok: true, user });
 };
