@@ -3,12 +3,11 @@ import type { RequestHandler } from './$types';
 import { users } from '$lib/clerk-svelte/server';
 
 export const POST: RequestHandler = async ({ locals, request }) => {
-  const user = locals.user;
-  if (!user) {
-    return json({ ok: false, error: 'User not found' });
+  if (!locals.session) {
+    return json({ ok: false, error: 'Users Session not found' });
   }
   const body = await request.json();
-  users.updateUser(user.id, {
+  users.updateUser(locals.session.userId, {
     publicMetadata: {
       role: body.role,
     },

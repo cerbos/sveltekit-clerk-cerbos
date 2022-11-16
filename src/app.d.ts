@@ -4,6 +4,9 @@
 
 declare namespace App {
   interface Locals {
-    user?: import('@clerk/clerk-sdk-node').User;
+    session: {
+      userId: string;
+      claims: import('@clerk/clerk-sdk-node').ClerkJWTClaims;
+    };
   }
 }
