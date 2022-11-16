@@ -1,5 +1,7 @@
 import Clerk from '@clerk/clerk-sdk-node/dist/cjs/instance';
 import { env } from '$env/dynamic/private';
+import { json } from '@sveltejs/kit';
+import type { RequestHandler, RequestEvent } from '@sveltejs/kit';
 
 const clerk = new Clerk({ apiKey: env.CLERK_API_KEY });
 
@@ -17,4 +19,11 @@ export const verifySession = async (sessionToken?: string) => {
       console.log('ERROR', err);
     }
   }
+};
+
+export const requireSession = (handler: RequestHandler) => async (event: RequestEvent) => {
+  if (!event.locals.session) {
+    return json({ ok: false, error: 'Users Session not found' });
+  }
+  return handler(event);
 };

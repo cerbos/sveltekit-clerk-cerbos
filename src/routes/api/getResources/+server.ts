@@ -1,15 +1,11 @@
 import { json } from '@sveltejs/kit';
 import { GRPC as Cerbos } from '@cerbos/grpc';
 import type { RequestHandler } from './$types';
-import { users } from '$lib/clerk-svelte/server';
+import { users, requireSession } from '$lib/clerk-svelte/server';
 
 const cerbos = new Cerbos('localhost:3593', { tls: false });
 
-export const POST: RequestHandler = async ({ locals }) => {
-  if (!locals.session) {
-    return json({ ok: false, error: 'Session not found' });
-  }
-
+export const POST: RequestHandler = requireSession(async ({ locals }) => {
   const user = await users.getUser(locals.session.userId);
 
   if (!user) {
@@ -56,4 +52,4 @@ export const POST: RequestHandler = async ({ locals }) => {
 
   const result = await cerbos.checkResources(cerbosPayload);
   return json(result);
-};
+});
