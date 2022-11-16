@@ -1,13 +1,23 @@
 <script lang="ts">
   import { getClerkStore } from '$lib/clerk-svelte';
   const clerk = getClerkStore();
+
   let user = $clerk?.user;
-  let role = (user?.publicMetadata.role as string) || '';
+  $: role = (user?.publicMetadata.role as string) || '';
+
   let loading = false;
 
   const setRole = async (e: Event) => {
     const target = e.target as HTMLSelectElement;
-    role = target.value;
+    loading = true;
+    await fetch('/api/updateRole', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ role: target.value }),
+    });
+    loading = false;
   };
 </script>
 

@@ -8,8 +8,11 @@ export const users = clerk.users;
 export const verifySession = async (sessionToken?: string) => {
   if (sessionToken) {
     try {
-      const tokenData = await clerk.verifyToken(sessionToken);
-      return await clerk.users.getUser(tokenData.sub);
+      const claims = await clerk.verifyToken(sessionToken);
+      return {
+        userId: claims.sub,
+        claims,
+      };
     } catch (err) {
       console.log('ERROR', err);
     }
