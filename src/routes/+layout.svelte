@@ -2,7 +2,6 @@
   import { setContext } from 'svelte';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
-  import { page } from '$app/stores';
   import { PUBLIC_CLERK_FRONTEND_API } from '$env/static/public';
   import { createClerkStore } from '$lib/clerk-svelte';
 
@@ -16,9 +15,7 @@
     <slot />
   </main>
 </div>
-{#if !$page.data.noFooter}
-  <Footer />
-{/if}
+<Footer />
 
 <style lang="scss" global>
   @import './styles.scss';
