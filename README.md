@@ -72,7 +72,7 @@ If you **have the Cerbos binary installed locally** and available to the project
 npm run cerbos
 ```
 
-Which will use the config at `./cerbos/cerbos.yaml` to start Cerbos.
+Which will use the yaml policy files at `cerbos/policies/*.yaml` to configure authorization policies for Cerbos.
 
 The `cerbos/policies` directory contains the policies that will be loaded into Cerbos when it starts. You can edit these policies to see how they affect the behavior of the app.
 
