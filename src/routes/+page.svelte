@@ -70,6 +70,7 @@
     height: 3.5rem;
     align-items: center;
     justify-content: space-between;
+    margin-top: 1rem;
   }
 
   @media screen and (min-width: 768px) {
@@ -86,6 +87,7 @@
       padding-left: 28px;
       flex-direction: row;
       height: inherit;
+      margin-top: 4rem;
     }
 
     .cards {
