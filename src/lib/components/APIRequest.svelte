@@ -95,7 +95,7 @@
     {#await response}
       <Prism source="// Loading..." />
     {:then responseJSON}
-      <Prism source={JSON.stringify(responseJSON, null, 2)} />
+      <Prism source={JSON.stringify(responseJSON, null, 2)} language="json" />
     {:catch error}
       <Prism source="// There was an error with the request. Please contact support@clerk.dev" />
     {/await}
