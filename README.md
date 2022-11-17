@@ -56,6 +56,15 @@ The Clerk API keys can be found at the [API Keys page](https://dashboard.clerk.d
 Cerbos runs [along side of the app](https://docs.cerbos.dev/cerbos/latest/deployment/index.html), so for this local demonstration
 you'll have to start **Cerbos** separately, from the app.
 
+There are many ways to run Cerbos:
+
+- [A Docker Container (recommended for this demo)](docker--recommended-)
+- [Homebrew](https://docs.cerbos.dev/cerbos/latest/installation/binary.html#homebrew)
+- [Install from binary](https://docs.cerbos.dev/cerbos/latest/installation/binary.html)
+- [Install from Helm chart](https://docs.cerbos.dev/cerbos/latest/installation/helm.html)
+
+#### Docker (recommended)
+
 **If you have [Docker](https://www.docker.com/) installed**: you can simply run the npm run script `cerbos:docker` from the root of the project to start **Cerbos** in a container.
 
 ```bash
@@ -64,7 +73,7 @@ npm run cerbos:docker
 
 _(on windows you may need to run `npm run cerbos:docker:win`)_
 
-**If you DON'T have docker installed**: you can install the Cerbos binary locally using one of [installation methods for your system described in our docs](https://docs.cerbos.dev/cerbos/latest/installation/index.html), including an option for using `Homebrew` if you're on a Mac.
+#### Binary
 
 If you **have the Cerbos binary installed locally** and available to the project, you can start Cerbos with the following command from the root of the project:
 
@@ -72,7 +81,7 @@ If you **have the Cerbos binary installed locally** and available to the project
 npm run cerbos
 ```
 
-Which will use the yaml policy files at `cerbos/policies/*.yaml` to configure authorization policies for Cerbos.
+This will use the yaml policy files at `cerbos/policies/*.yaml` to configure authorization policies for Cerbos.
 
 The `cerbos/policies` directory contains the policies that will be loaded into Cerbos when it starts. You can edit these policies to see how they affect the behavior of the app.
 
