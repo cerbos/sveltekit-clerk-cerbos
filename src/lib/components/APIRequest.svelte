@@ -18,6 +18,8 @@
   const clerk = getClerkStore();
   let user = $clerk?.user;
   let id = user?.id;
+  let role = user?.publicMetadata.role;
+
   let apiSample: string = `import { requireSession, users } from "@clerk/nextjs/api";
 import { GRPC as Cerbos } from "@cerbos/grpc";
 const cerbos = new Cerbos("localhost:3593");
@@ -81,60 +83,29 @@ export default requireSession(async (req, res) => {
   res.json(result.results);
 });
 `;
-  let response: Promise<{ resource: Contact; actions: Actions; validationErrors: unknown[] }[]>;
+  let response: Promise<{
+    results: { resource: Contact; actions: Actions; validationErrors: unknown[] }[];
+  }>;
   let tableResults: { resource: Contact; actions: Actions; validationErrors: unknown[] }[];
+
+  // This just caches and shows the previous results when re-fetching
   $: response?.then((data) => {
-    tableResults = data;
+    tableResults = data.results;
   });
 
-  const makeRequest = (e: Event) => {
+  const makeRequest = async (e: Event) => {
     e.preventDefault();
-    response = new Promise((res) =>
-      setTimeout(
-        () =>
-          res([
-            {
-              resource: {
-                id: '1',
-                kind: 'contact',
-                policyVersion: '',
-                scope: '',
-              },
-              actions: {
-                delete: 'EFFECT_ALLOW',
-                update: 'EFFECT_ALLOW',
-                create: 'EFFECT_ALLOW',
-                read: 'EFFECT_ALLOW',
-              },
-              validationErrors: [],
-            },
-            {
-              resource: {
-                id: '2',
-                kind: 'contact',
-                policyVersion: '',
-                scope: '',
-              },
-              actions: {
-                delete: 'EFFECT_DENY',
-                update: 'EFFECT_DENY',
-                create: 'EFFECT_ALLOW',
-                read: 'EFFECT_ALLOW',
-              },
-              validationErrors: [],
-            },
-          ]),
-        1000
-      )
-    );
+    if (role) {
+      response = fetch('/api/getResources').then((res) => res.json());
+    }
   };
 </script>
 
 <div class="api-request">
   <h2>Demo: Access API authorized by Cerbos</h2>
   <p>
-    Now that you are authenticated as {user?.primaryEmailAddress} the following makes a request to the
-    API endpoint of a sample CRM application. This will call Cerbos to check that you are authorized
+    Now that you are authenticated as <b>{user?.primaryEmailAddress}</b> the following makes a request
+    to the API endpoint of a sample CRM application. This will call Cerbos to check that you are authorized
     based on the resources being requested. The result will be returned below demonstrating the authorization
     decision from Cerbos.
   </p>
@@ -157,28 +128,26 @@ export default requireSession(async (req, res) => {
   </h4>
 
   {#if tableResults}
-    {#await tableResults then authz}
-      <table>
-        <thead>
+    <table>
+      <thead>
+        <tr>
+          <td>Resource</td>
+          <td>Read</td>
+          <td>Update</td>
+          <td>Delete</td>
+        </tr>
+      </thead>
+      <tbody>
+        {#each tableResults as { resource, actions }}
           <tr>
-            <td>Resource</td>
-            <td>Read</td>
-            <td>Update</td>
-            <td>Delete</td>
+            <td>{resource.id}</td>
+            <td>{actions?.read == 'EFFECT_ALLOW' ? '✅' : '❌'}</td>
+            <td>{actions?.update == 'EFFECT_ALLOW' ? '✅' : '❌'}</td>
+            <td>{actions?.delete == 'EFFECT_ALLOW' ? '✅' : '❌'}</td>
           </tr>
-        </thead>
-        <tbody>
-          {#each authz as { resource, actions }}
-            <tr>
-              <td>{resource.id}</td>
-              <td>{actions?.read == 'EFFECT_ALLOW' ? '✅' : '❌'}</td>
-              <td>{actions?.update == 'EFFECT_ALLOW' ? '✅' : '❌'}</td>
-              <td>{actions?.delete == 'EFFECT_ALLOW' ? '✅' : '❌'}</td>
-            </tr>
-          {/each}
-        </tbody>
-      </table>
-    {/await}
+        {/each}
+      </tbody>
+    </table>
   {/if}
 
   {#if !response}

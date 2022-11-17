@@ -1,9 +1,8 @@
 <script lang="ts">
   import { getClerkStore } from '$lib/clerk-svelte';
   const clerk = getClerkStore();
-
-  let user = $clerk?.user;
-  $: role = (user?.publicMetadata.role as string) || '';
+  $: user = $clerk?.user;
+  let role = (user?.publicMetadata.role as string) || '';
 
   let loading = false;
 
@@ -17,6 +16,7 @@
       },
       body: JSON.stringify({ role: target.value }),
     });
+    role = target.value;
     loading = false;
   };
 </script>

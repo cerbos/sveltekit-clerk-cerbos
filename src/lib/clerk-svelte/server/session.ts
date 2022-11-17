@@ -16,7 +16,7 @@ export const verifySession = async (sessionToken?: string) => {
         claims,
       };
     } catch (err) {
-      console.log('ERROR', err);
+      console.warn('ERROR', err);
     }
   }
 };

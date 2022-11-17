@@ -2,9 +2,10 @@
   export let href: string | null | undefined = undefined;
   export let title: string | undefined;
   export let loading = false;
+  export let disabled = false;
 </script>
 
-<div class="card" class:loading>
+<div class="card" class:loading class:disabled>
   {#if !loading}
     <a {href} class="cardContent" on:click>
       <div class="icon">
@@ -37,6 +38,11 @@
 
   .card-content :global(p) {
     margin: 0;
+  }
+
+  .disabled {
+    opacity: 0.5;
+    pointer-events: none;
   }
 
   .loading {
