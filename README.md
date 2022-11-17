@@ -1,4 +1,4 @@
-# Clerk, Cerbos and SvelteKit Example
+# Cerbos, Clerk and SvelteKit Example
 
 This example shows how to use [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=sveltekit_starter) with [Cerbos](https://cerbos.dev) in a [SvelteKit](https://kit.svelte.dev/) application.
 
@@ -6,7 +6,7 @@ The example features adding sign up, sign in, profile management, and an authent
 
 ## Table of Contents
 
-- [Clerk, Cerbos and SvelteKit Example](#clerk--cerbos-and-sveltekit-example)
+- [Cerbos, Clerk and SvelteKit Example](#cerbos--clerk-and-sveltekit-example)
   - [How to Run the Example](#how-to-run-the-example)
     - [1. Clone the repository](#1-clone-the-repository)
     - [2. Set up your Clerk account and project](#2-set-up-your-clerk-account-and-project)
@@ -25,7 +25,7 @@ The example features adding sign up, sign in, profile management, and an authent
 ### 1. Clone the repository
 
 ```bash
-git clone  https://github.com/cerbos/svelte-clerk-cerbos.git
+git clone https://github.com/thisdot/cerbos-clerk-and-sveltekit-example.git
 # note: update with final repo
 ```
 

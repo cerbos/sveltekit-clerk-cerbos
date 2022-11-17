@@ -1,5 +1,5 @@
 {
-  "name": "cerbos-svelte-starter",
+  "name": "cerbos-clerk-and-sveltekit-example",
   "description": "An example app showing how to use Cerbos with Clerk in a SvelteKit application",
   "keywords": [
     "cerbos",
@@ -7,6 +7,10 @@
     "svelte-kit",
     "sass"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thisdot/cerbos-clerk-and-sveltekit-example.git"
+  },
   "private": true,
   "version": "0.1.0",
   "type": "module",
