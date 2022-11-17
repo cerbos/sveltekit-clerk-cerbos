@@ -1,9 +1,9 @@
-import Clerk from '@clerk/clerk-sdk-node/dist/cjs/instance';
-import { env } from '$env/dynamic/private';
+import Clerk from '@clerk/clerk-sdk-node/dist/esm/instance';
+import { CLERK_API_KEY } from '$env/static/private';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler, RequestEvent } from '@sveltejs/kit';
 
-const clerk = new Clerk({ apiKey: env.CLERK_API_KEY });
+const clerk = new Clerk({ apiKey: CLERK_API_KEY });
 
 export const users = clerk.users;
 
