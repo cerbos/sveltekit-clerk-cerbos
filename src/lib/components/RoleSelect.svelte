@@ -9,6 +9,7 @@
   const setRole = async (e: Event) => {
     const target = e.target as HTMLSelectElement;
     loading = true;
+    role = target.value;
     await fetch('/api/updateRole', {
       method: 'POST', // or 'PUT'
       headers: {
@@ -16,7 +17,6 @@
       },
       body: JSON.stringify({ role: target.value }),
     });
-    role = target.value;
     loading = false;
   };
 </script>

@@ -168,7 +168,7 @@ export default requireSession(async (req, res) => {
 
 <style lang="scss">
   .api-request {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
   h2 {
     text-align: center;

@@ -24,7 +24,6 @@
 
 <style lang="scss">
   .card {
-    min-height: 135px;
     border: 2px solid #fff;
     border-radius: 0.5em;
     transition: color 0.15s ease, border-color 0.15s ease;
