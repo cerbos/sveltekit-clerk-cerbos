@@ -1,5 +1,5 @@
-import { json } from '@sveltejs/kit';
 import { GRPC as Cerbos } from '@cerbos/grpc';
+import { json } from '@sveltejs/kit';
 import { users, requireSession } from '$lib/clerk-svelte/server';
 import type { RequestHandler } from './$types';
 
@@ -28,7 +28,7 @@ export const GET: RequestHandler = requireSession(async ({ locals }) => {
           kind: 'contact',
           id: '1',
           attributes: {
-            owner: user.id,
+            owner: user.id, // faked to demostrate ownership policy
             lastUpdated: new Date(2020, 10, 10).toISOString(),
           },
         },
@@ -48,8 +48,22 @@ export const GET: RequestHandler = requireSession(async ({ locals }) => {
       },
     ],
   };
+
   console.log(cerbosPayload);
 
   const result = await cerbos.checkResources(cerbosPayload);
+
+  // make decisions based on the result
+  // if(result.isAllowed({
+  //   resource: {
+  //     kind: "contact",
+  //     id: "1",
+  //   },
+  //   action: "edit",
+  // })) {
+  //  ... can do edit action on resource ID 1
+  // }
+
+  // return the payload for demo purposes
   return json(result);
 });

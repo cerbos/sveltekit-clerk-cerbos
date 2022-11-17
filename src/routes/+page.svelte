@@ -4,6 +4,11 @@
   import Card from '$lib/components/Card.svelte';
   import CerbosPolicy from '$lib/components/CerbosPolicy.svelte';
   import CerbosDemo from '$lib/components/CerbosDemo.svelte';
+  import type { PageData } from './$types';
+
+  export let data: PageData;
+  $: policySource = data.policySource;
+  $: getResourcesApiSource = data.getResourcesApiSource;
 
   const clerk = getClerkStore();
   $: signedIn = !!$clerk?.user;
@@ -36,8 +41,8 @@
 </div>
 
 {#if signedIn}
-  <CerbosPolicy />
-  <CerbosDemo />
+  <CerbosPolicy {policySource} />
+  <CerbosDemo {getResourcesApiSource} />
 {/if}
 
 <div class="links">

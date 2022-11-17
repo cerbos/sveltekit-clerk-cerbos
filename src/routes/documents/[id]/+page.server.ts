@@ -7,10 +7,15 @@ import type { PageServerLoad } from './$types';
 const cerbos = new Cerbos('localhost:3593', { tls: false });
 
 export const load: PageServerLoad = async ({ locals, params }) => {
+  if (!locals.session) {
+    throw error(403, 'Forbidden - not logged in');
+  }
+
   // fetch the user from the session
   const user = await users.getUser(locals.session.userId);
   // cerbos requires an array of `roles` so we just wrap `role` in an array
   const roles = user.publicMetadata.role ? [user.publicMetadata.role as string] : ['user'];
+
   // query for the minimal infomation needed to pass to cerbos for an authorization check
   const documentAttrs = await getDocumentAttributesById(params.id);
 

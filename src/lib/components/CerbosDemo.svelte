@@ -2,10 +2,12 @@
   import RoleSelect from '$lib/components/RoleSelect.svelte';
   import APIRequest from '$lib/components/APIRequest.svelte';
   import GuardedRoutes from './GuardedRoutes.svelte';
+
+  export let getResourcesApiSource = '';
 </script>
 
 <div>
   <RoleSelect />
-  <APIRequest />
+  <APIRequest {getResourcesApiSource} />
   <GuardedRoutes />
 </div>

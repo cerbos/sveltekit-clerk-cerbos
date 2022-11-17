@@ -1,5 +1,9 @@
 <script lang="ts">
   import Prism from './Prism.svelte';
+
+  export let policySource: {
+    [filename: string]: string;
+  };
 </script>
 
 <div class="cerbos-policy">
@@ -20,33 +24,8 @@
       and <b>delete</b> actions.
     </li>
   </ul>
-  <Prism
-    language="plain"
-    source={`---
-apiVersion: api.cerbos.dev/v1
-resourcePolicy:
-version: default
-resource: contact
-rules:
-- actions: ["read", "create"]
-  effect: EFFECT_ALLOW
-  roles:
-    - admin
-    - user
 
-- actions: ["update", "delete"]
-  effect: EFFECT_ALLOW
-  roles:
-    - admin
-
-- actions: ["update", "delete"]
-  effect: EFFECT_ALLOW
-  roles:
-    - user
-  condition:
-    match:
-      expr: request.resource.attr.owner == request.principal.id`}
-  />
+  <Prism language="plain" source={policySource['contact.yaml']} />
 </div>
 
 <style lang="scss">

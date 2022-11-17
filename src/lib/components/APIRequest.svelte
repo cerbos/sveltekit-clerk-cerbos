@@ -3,6 +3,8 @@
   import Prism from './Prism.svelte';
   import { getClerkStore } from '$lib/clerk-svelte';
 
+  export let getResourcesApiSource = '';
+
   interface Contact {
     id: string;
     [key: string]: unknown;
@@ -20,69 +22,6 @@
   let id = user?.id;
   let role = user?.publicMetadata.role;
 
-  let apiSample: string = `import { requireSession, users } from "@clerk/nextjs/api";
-import { GRPC as Cerbos } from "@cerbos/grpc";
-const cerbos = new Cerbos("localhost:3593");
-
-export default requireSession(async (req, res) => {
-  const user = await users.getUser("${id}");
-
-  const roles = user.publicMetadata.role
-    ? [user.publicMetadata.role]
-    : ["user"];
-
-  const cerbosPayload = {
-    principal: {
-      id: "${id}",
-      roles, //roles from Clerk profile
-      attributes: user,
-    },
-    resources: [
-      {
-        resource: {
-          kind: "contact",
-          id: "1",
-          attributes: {
-            owner: "${id}", // faked to demostrate ownership policy
-            lastUpdated: "2021-10-10",
-          },
-        },
-        // the list of actions on the resource to check authorization for
-        actions: ["read", "create", "update", "delete"],
-      },
-
-      {
-        resource: {
-          kind: "contact",
-          id: "2",
-          attributes: {
-            owner: "somerUserId",
-            lastUpdated: "2021-10-10",
-          },
-        },
-        // the list of actions on the resource to check authorization for
-        actions: ["read", "create", "update", "delete"],
-      },
-    ],
-  };
-
-  const result = await cerbos.checkResources(cerbosPayload);
-
-  // make decisions baased on the result
-  // if(result.isAllowed({
-  //   resource: {
-  //     kind: "contact",
-  //     id: "1",
-  //   },
-  //   action: "edit",
-  // })) {
-  //  ... can do edit action on resource ID 1
-  // }
-
-  // return the payload for demo purposes
-  res.json(result.results);
-});
-`;
   let response: Promise<{
     results: { resource: Contact; actions: Actions; validationErrors: unknown[] }[];
   }>;
@@ -163,7 +102,11 @@ export default requireSession(async (req, res) => {
   {/if}
 
   <h4>/api/getResources</h4>
-  <Prism source={apiSample} />
+  <Prism
+    source={getResourcesApiSource
+      .replaceAll('user.id', `"${id}"`)
+      .replaceAll('locals.session.userId', `"${id}"`)}
+  />
 </div>
 
 <style lang="scss">
