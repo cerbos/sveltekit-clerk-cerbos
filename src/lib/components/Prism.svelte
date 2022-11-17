@@ -1,5 +1,7 @@
 <script lang="ts">
   import Prism from 'prismjs';
+  import 'prismjs/components/prism-yaml';
+  import 'prismjs/components/prism-json';
 
   export let source = `console.log('Hello world')`;
   export let language = 'javascript';

@@ -25,7 +25,7 @@
     </li>
   </ul>
 
-  <Prism language="plain" source={policySource['contact.yaml']} />
+  <Prism language="yaml" source={policySource['contact.yaml']} />
 </div>
 
 <style lang="scss">
