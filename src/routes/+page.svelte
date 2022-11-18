@@ -14,7 +14,7 @@
   $: signedIn = !!$clerk?.user;
 </script>
 
-<h1>Clerk + Cerbos Demo App</h1>
+<h1>Cerbos, Clerk and SvelteKit Demo App</h1>
 <p class="description">
   Example SvelteKit app using Clerk for authentication and Cerbos for authorization.
 </p>
