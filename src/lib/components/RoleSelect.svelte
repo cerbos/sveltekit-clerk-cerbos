@@ -21,30 +21,21 @@
   };
 </script>
 
-<div class="role">
-  <h2>Demo: Set your Role</h2>
-  <p>
-    For this demo set a role on your Clerk user - this is stored in the publicMetadata field of your
-    user profile and passed into Cerbos for use in authorization.
-  </p>
-  <select class="role-select" bind:value={role} on:input={setRole} disabled={loading}>
-    <option value="">Select a role</option>
-    <option value="admin">Admin</option>
-    <option value="user">User</option>
-  </select>
-  <p>
-    Once you change the role, re-run the below request to see the impact on the authorization
-    result.
-  </p>
-</div>
+<h2>Demo: Set your Role</h2>
+<p>
+  For this demo set a role on your Clerk user - this is stored in the publicMetadata field of your
+  user profile and passed into Cerbos for use in authorization.
+</p>
+<select class="role-select" bind:value={role} on:input={setRole} disabled={loading}>
+  <option value="">Select a role</option>
+  <option value="admin">Admin</option>
+  <option value="user">User</option>
+</select>
+<p>
+  Once you change the role, re-run the below request to see the impact on the authorization result.
+</p>
 
 <style lang="scss">
-  .role {
-    margin-bottom: 4rem;
-  }
-  h2 {
-    text-align: center;
-  }
   .role-select {
     width: 100%;
     padding: 0.5em;

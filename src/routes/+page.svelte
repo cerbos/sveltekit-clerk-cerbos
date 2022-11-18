@@ -3,7 +3,9 @@
   import DocsLink from '$lib/components/DocsLink.svelte';
   import Card from '$lib/components/Card.svelte';
   import CerbosPolicy from '$lib/components/CerbosPolicy.svelte';
-  import CerbosDemo from '$lib/components/CerbosDemo.svelte';
+  import RoleSelect from '$lib/components/RoleSelect.svelte';
+  import APIRequest from '$lib/components/APIRequest.svelte';
+  import GuardedRoutes from '$lib/components/GuardedRoutes.svelte';
   import type { PageData } from './$types';
 
   export let data: PageData;
@@ -19,17 +21,9 @@
   Example SvelteKit app using Clerk for authentication and Cerbos for authorization.
 </p>
 
-<div class="cards">
-  {#if signedIn}
-    <Card on:click={() => $clerk?.openUserProfile()} title="Manage your Clerk user profile">
-      <img slot="icon" src="/icons/layout.svg" alt="" />
-      <p>
-        Interact with the user button, user profile, and more to preview what your users will see
-      </p>
-      <img slot="action" src="/icons/arrow-right.svg" alt="" />
-    </Card>
-  {:else}
-    <Card href="/sign-up" title="Log in/Sign up for an account" loading={!$clerk}>
+{#if !signedIn}
+  <section class="login">
+    <Card title="Log in/Sign up for an account" href="/sign-up" loading={!$clerk}>
       <img slot="icon" src="/icons/user-plus.svg" alt="" />
       <p>
         Login to your account or sign up for a new account maanged by Clerk.dev. This will provide
@@ -37,12 +31,36 @@
       </p>
       <img slot="action" src="/icons/arrow-right.svg" alt="" />
     </Card>
-  {/if}
-</div>
+  </section>
+{/if}
 
 {#if signedIn}
-  <CerbosPolicy {policySource} />
-  <CerbosDemo {getResourcesApiSource} />
+  <section class="cerbos-policy-example">
+    <CerbosPolicy {policySource} />
+  </section>
+
+  <section class="role-selection">
+    <RoleSelect />
+  </section>
+
+  <section class="demo-resource-authorization">
+    <APIRequest {getResourcesApiSource} />
+  </section>
+
+  <section class="demo-route-guards">
+    <GuardedRoutes />
+  </section>
+
+  <section class="user-profile">
+    <h2>Clerk - User Profile</h2>
+    <Card title="Manage your Clerk user profile" on:click={() => $clerk?.openUserProfile()}>
+      <img slot="icon" src="/icons/layout.svg" alt="" />
+      <p>
+        Interact with the user button, user profile, and more to preview what your users will see
+      </p>
+      <img slot="action" src="/icons/arrow-right.svg" alt="" />
+    </Card>
+  </section>
 {/if}
 
 <div class="links">
@@ -57,14 +75,16 @@
 <style lang="scss">
   h1 {
     margin: 0;
-    font-size: 1.75rem;
-    line-height: 35px;
-    text-align: center;
+  }
+
+  section {
+    padding-top: 0.5rem;
+    margin-bottom: 2rem;
   }
 
   .description {
     margin-top: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 2rem;
     color: #808080;
     text-align: center;
   }
@@ -80,7 +100,6 @@
 
   @media screen and (min-width: 768px) {
     h1 {
-      line-height: 50px;
       font-size: 2.5rem;
     }
 
@@ -93,10 +112,6 @@
       flex-direction: row;
       height: inherit;
       margin-top: 4rem;
-    }
-
-    .cards {
-      margin: 4rem 0;
     }
   }
 </style>
