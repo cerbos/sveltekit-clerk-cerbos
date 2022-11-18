@@ -2,7 +2,7 @@
   import { getClerkStore } from '$lib/clerk-svelte';
   const clerk = getClerkStore();
   $: user = $clerk?.user;
-  let role = (user?.publicMetadata.role as string) || '';
+  export let role: string;
 
   let loading = false;
 
@@ -17,6 +17,7 @@
       },
       body: JSON.stringify({ role: target.value }),
     });
+    await user?.reload(); // refresh frontend user data
     loading = false;
   };
 </script>
@@ -27,7 +28,9 @@
   user profile and passed into Cerbos for use in authorization.
 </p>
 <select class="role-select" bind:value={role} on:input={setRole} disabled={loading}>
+  <!-- {#if role === ''} -->
   <option value="">Select a role</option>
+  <!-- {/if} -->
   <option value="admin">Admin</option>
   <option value="user">User</option>
 </select>
