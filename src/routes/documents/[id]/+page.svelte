@@ -45,14 +45,6 @@
 />
 
 <style lang="scss">
-  h1 {
-    text-align: center;
-  }
-
-  h4 {
-    margin: 0;
-  }
-
   img {
     display: block;
     margin: 2rem auto;
