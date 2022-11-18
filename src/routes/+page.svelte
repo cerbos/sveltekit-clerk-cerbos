@@ -21,7 +21,20 @@
   Example SvelteKit app using Clerk for authentication and Cerbos for authorization.
 </p>
 
-{#if !signedIn}
+{#if signedIn}
+  <section class="role-selection">
+    <RoleSelect />
+  </section>
+
+  <div class="example-links">
+    <Card href="#resource-access" title="Resource Access Demo">
+      <img slot="icon" src="/icons/server.svg" alt="" />
+    </Card>
+    <Card href="#route-guard" title="Route Guard Demo">
+      <img slot="icon" src="/icons/lock.svg" alt="" />
+    </Card>
+  </div>
+{:else}
   <section class="login">
     <Card title="Log in/Sign up for an account" href="/sign-up" loading={!$clerk}>
       <img slot="icon" src="/icons/user-plus.svg" alt="" />
@@ -39,15 +52,11 @@
     <CerbosPolicy {policySource} />
   </section>
 
-  <section class="role-selection">
-    <RoleSelect />
-  </section>
-
-  <section class="demo-resource-authorization">
+  <section id="resource-access" class="demo-resource-authorization">
     <APIRequest {getResourcesApiSource} />
   </section>
 
-  <section class="demo-route-guards">
+  <section id="route-guard" class="demo-route-guards">
     <GuardedRoutes />
   </section>
 
@@ -96,6 +105,16 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 1rem;
+  }
+
+  .example-links {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+
+    :global(.card) {
+      flex-basis: 50%;
+    }
   }
 
   @media screen and (min-width: 768px) {
