@@ -69,9 +69,9 @@ _Alternatviely you could use `yarn` or `pnpm` or anything that runs `npm scripts
 
 ### 2. Set up your Clerk account and project
 
-Create a free account at https://clerk.dev and follow the instructions to create a new **application** for `dev` following the directions at:
+Create a free account at https://clerk.dev and create a new **application** for `development`.
 
-https://clerk.dev/docs/authentication/set-up-your-application
+If you have any trouble you can check out [Clerk](https://clerk.dev)'s documentation for [setting up you application.](https://clerk.dev/docs/authentication/set-up-your-application)
 
 ### 3. Add your ENV variables to an `env.local` at the root of the project
 
