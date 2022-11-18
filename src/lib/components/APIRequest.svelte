@@ -18,9 +18,9 @@
   }
 
   const clerk = getClerkStore();
-  let user = $clerk?.user;
-  let id = user?.id;
-  let role = user?.publicMetadata.role;
+  $: user = $clerk?.user;
+  $: id = user?.id;
+  $: role = user?.publicMetadata.role;
 
   let response: Promise<{
     results: { resource: Contact; actions: Actions; validationErrors: unknown[] }[];
@@ -48,7 +48,11 @@
   decision from Cerbos.
 </p>
 
-<Card on:click={makeRequest} title="fetch('/api/getResources')">
+<Card
+  on:click={makeRequest}
+  title={`fetch('/api/getResources')${role ? ` as ${role}` : ''}`}
+  disabled={!role}
+>
   <img slot="icon" src="/icons/server.svg" alt="" />
   <p>
     Retrieve what permissions a user has on resouces based on upon Cerbos policies. The backend will
@@ -89,7 +93,11 @@
 {/if}
 
 {#if !response}
-  <Prism source="// Click above to run the request" />
+  {#if !role}
+    <Prism source="// You must set a role in the dropdown above" />
+  {:else}
+    <Prism source="// Click above to run the request" />
+  {/if}
 {:else}
   {#await response}
     <Prism source="// Loading..." />

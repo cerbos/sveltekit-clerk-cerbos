@@ -13,7 +13,8 @@
   $: getResourcesApiSource = data.getResourcesApiSource;
 
   const clerk = getClerkStore();
-  $: signedIn = !!$clerk?.user;
+  $: user = $clerk?.user;
+  $: role = (user?.publicMetadata.role as string) || '';
 </script>
 
 <h1>Cerbos, Clerk and SvelteKit Demo App</h1>
@@ -21,16 +22,16 @@
   Example SvelteKit app using Clerk for authentication and Cerbos for authorization.
 </p>
 
-{#if signedIn}
+{#if user}
   <section class="role-selection">
-    <RoleSelect />
+    <RoleSelect {role} />
   </section>
 
   <div class="example-links">
-    <Card href="#resource-access" title="Resource Access Demo">
+    <Card href="#resource-access" title="Resource Access Demo" disabled={!role}>
       <img slot="icon" src="/icons/server.svg" alt="" />
     </Card>
-    <Card href="#route-guard" title="Route Guard Demo">
+    <Card href="#route-guard" title="Route Guard Demo" disabled={!role}>
       <img slot="icon" src="/icons/lock.svg" alt="" />
     </Card>
   </div>
@@ -47,7 +48,7 @@
   </section>
 {/if}
 
-{#if signedIn}
+{#if user}
   <section class="cerbos-policy-example">
     <CerbosPolicy {policySource} />
   </section>
@@ -57,7 +58,7 @@
   </section>
 
   <section id="route-guard" class="demo-route-guards">
-    <GuardedRoutes />
+    <GuardedRoutes disabled={!role} />
   </section>
 
   <section class="user-profile">
