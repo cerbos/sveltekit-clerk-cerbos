@@ -90,7 +90,7 @@ The Clerk API keys can be found at the [API Keys page](https://dashboard.clerk.d
 ### 4. Start Cerbos locally
 
 Cerbos runs [along side of the app](https://docs.cerbos.dev/cerbos/latest/deployment/index.html), so for this local demonstration
-you'll have to start **Cerbos** separately, from the app.
+you'll have to start **Cerbos** separately from the app.
 
 There are many ways to run Cerbos:
 
@@ -137,7 +137,7 @@ You could also `build` and `preview` the app to see what it would be like in pro
 
 - Open your browser to `http://localhost:5137` to see the included example code running.
 
-There is a demonstration of changing the users role, and seeing how that affects the permissions of the user to take actions on the resources.
+There is a demonstration of changing the user's role, and seeing how that affects the permissions of the user to take actions on the resources.
 
 ## Commands
 
