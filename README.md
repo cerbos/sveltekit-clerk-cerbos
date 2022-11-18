@@ -7,22 +7,52 @@ The example features adding sign up, sign in, profile management, and an authent
 ## Table of Contents
 
 - [Cerbos, Clerk and SvelteKit Example](#cerbos--clerk-and-sveltekit-example)
+
+  - [Overview](#overview)
+    - [Tech Stack](#tech-stack)
+    - [Included Tooling](#included-tooling)
   - [How to Run the Example](#how-to-run-the-example)
-    - [1. Clone the repository](#1-clone-the-repository)
+
+    - [1. Clone the repository and install the dependencies](#1-clone-the-repository-and-install-the-dependencies)
     - [2. Set up your Clerk account and project](#2-set-up-your-clerk-account-and-project)
     - [3. Add your ENV variables to an `env.local` at the root of the project](#3-add-your-env-variables-to-an-envlocal-at-the-root-of-the-project)
     - [4. Start Cerbos locally](#4-start-cerbos-locally)
     - [5. Start the demo locally](#5-start-the-demo-locally)
     - [6. Check out the example implementation](#6-check-out-the-example-implementation)
-  - [Overview](#overview)
-    - [Tech Stack](#tech-stack)
-    - [Included Tooling](#included-tooling)
+
   - [Commands](#commands)
   - [Learn More](#learn-more)
 
+## Overview
+
+**[Cerbos](https://cerbos.dev)** is an open-source authorization-as-a-service option for allowing decoupled access control in your software. It allows writing human-readable policy definitions that serve as context-aware access control policies for your application resources.
+
+Cerbos works with any identity provider services like Auth0, Okta, FusionAuth, Clerk, Magic, WorkOS or even your own, bespoke directory system.
+
+In this demo we use [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=sveltekit_starter) as the identity provider.
+
+Our [SvelteKit](https://kit.svelte.dev/) application will connect with Clerk for authentication and Cerbos for authorization, to decide what actions are available on which resources for a given user.
+
+The policies is defined in the `cerbos/policies` directory. Each policy is authored in the a very human-readable format which you can learn more about at the [Cerbos Policy documentation site](https://docs.cerbos.dev/cerbos/latest/policies), and for the demo revolves around access to a `contacts` resource.
+
+### Tech Stack
+
+- [Cerbos](https://cerbos.dev)
+- [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=sveltekit_starter)
+- [SvelteKit v1.x](https://kit.svelte.dev/) - svelte app builder
+- [Svelte v3.x](https://svelte.dev/)
+- [Sass](https://sass-lang.com/) - Styling language
+
+### Included Tooling
+
+- [TypeScript](https://www.typescriptlang.org/) - Type checking
+- [ESLint](https://eslint.org/) - Code linting
+- [Prettier](https://prettier.io/) - Code formatting
+- [Vite](https://vitejs.dev/) - Bundler
+
 ## How to Run the Example
 
-### 1. Clone the repository
+### 1. Clone the repository and install the dependencies
 
 ```bash
 git clone https://github.com/thisdot/cerbos-clerk-and-sveltekit-example.git
@@ -30,6 +60,12 @@ git clone https://github.com/thisdot/cerbos-clerk-and-sveltekit-example.git
 ```
 
 Then `cd` into the project directory and run `npm install` to install the dependencies.
+
+```sh
+npm install
+```
+
+_Alternatviely you could use `yarn` or `pnpm` or anything that runs `npm scripts`_
 
 ### 2. Set up your Clerk account and project
 
@@ -102,35 +138,6 @@ You could also `build` and `preview` the app to see what it would be like in pro
 - Open your browser to `http://localhost:5137` to see the included example code running.
 
 There is a demonstration of changing the users role, and seeing how that affects the permissions of the user to take actions on the resources.
-
-## Overview
-
-**[Cerbos](https://cerbos.dev)** is an open-source authorization-as-a-service option for allowing decoupled access control in your software. It allows writing human-readable policy definitions that serve as context-aware access control policies for your application resources.
-
-Cerbos works with any identity provider services like Auth0, Okta, FusionAuth, Clerk, Magic, WorkOS or even your own, bespoke directory system.
-
-In this demo we use [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=sveltekit_starter) as the identity provider.
-
-Our [SvelteKit](https://kit.svelte.dev/) application will connect with Clerk for authentication and Cerbos for authorization, to decide what actions are available on which resources for a given user.
-
-The policies is defined in the `cerbos/policies` directory. Each policy is authored in the a very human-readable format which you can learn more about at the [Cerbos Policy documentation site](https://docs.cerbos.dev/cerbos/latest/policies), and for the demo revolves around access to a `contacts` resource.
-
-### Tech Stack
-
-- [Cerbos](https://cerbos.dev)
-- [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=sveltekit_starter)
-- [SvelteKit v1.x](https://kit.svelte.dev/) - svelte app builder
-- [Svelte v3.x](https://svelte.dev/)
-- [Sass](https://sass-lang.com/) - Styling language
-
-### Included Tooling
-
-- [TypeScript](https://www.typescriptlang.org/) - Type checking
-- [Storybook](https://storybook.js.org/) - Component library
-- [ESLint](https://eslint.org/) - Code linting
-- [Prettier](https://prettier.io/) - Code formatting
-- [Vite](https://vitejs.dev/) - Bundler
-- [Vitest](https://vitest.dev/) - Unit Test Framework
 
 ## Commands
 
