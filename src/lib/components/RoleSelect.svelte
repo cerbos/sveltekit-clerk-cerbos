@@ -28,9 +28,9 @@
   user profile and passed into Cerbos for use in authorization.
 </p>
 <select class="role-select" bind:value={role} on:input={setRole} disabled={loading}>
-  <!-- {#if role === ''} -->
-  <option value="">Select a role</option>
-  <!-- {/if} -->
+  {#if !role}
+    <option value="">Select a role</option>
+  {/if}
   <option value="admin">Admin</option>
   <option value="user">User</option>
 </select>
