@@ -27,6 +27,15 @@
     </p>
     <img slot="action" src="/icons/arrow-right.svg" alt="" />
   </Card>
+
+  <Card href="/documents/3" title="A Route the user does not own" {disabled}>
+    <img slot="icon" src="/icons/document.svg" alt="" />
+    <p>
+      This route is "guarded" by the <code>id</code> of the <code>author</code> of the
+      <b>document</b> resource.
+    </p>
+    <img slot="action" src="/icons/arrow-right.svg" alt="" />
+  </Card>
 </div>
 
 <style lang="scss">

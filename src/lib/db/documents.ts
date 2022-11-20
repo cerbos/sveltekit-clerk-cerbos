@@ -5,7 +5,7 @@ const documents = [
   {
     id: '1',
     title: 'Secret Admin Document',
-    author: 'some-author-id',
+    author: 'only-admins',
     blurb: "Congratulations! You've successfully accessed the admin only resource route.",
     icon: 'lock',
   },
@@ -15,6 +15,13 @@ const documents = [
     author: 'tbd', // we will actually fake this and replace this with the user's id
     blurb: "This document is available to the author and any user with the 'admin' role.",
     icon: 'unlock',
+  },
+  {
+    id: '3',
+    title: 'A Document',
+    author: 'not-the-current-user',
+    blurb: "This document is available to it's author and any user with the 'admin' role.",
+    icon: 'lock',
   },
 ];
 
