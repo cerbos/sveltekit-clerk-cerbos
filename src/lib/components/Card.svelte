@@ -6,20 +6,18 @@
 </script>
 
 <div class="card" class:loading class:disabled>
-  {#if !loading}
-    <a {href} class="cardContent" on:click>
-      <div class="icon">
-        <slot name="icon" />
-      </div>
-      <div>
-        <h3>{title}</h3>
-        <div class="card-content"><slot /></div>
-      </div>
-      <div class="action">
-        <slot name="action" />
-      </div>
-    </a>
-  {/if}
+  <a {href} on:click class="card-content">
+    <div class="icon">
+      <slot name="icon" />
+    </div>
+    <div>
+      <h3>{title}</h3>
+      <div><slot /></div>
+    </div>
+    <div class="action">
+      <slot name="action" />
+    </div>
+  </a>
 </div>
 
 <style lang="scss">
@@ -65,6 +63,10 @@
     animation: shine 1s infinite;
   }
 
+  .loading > * {
+    visibility: hidden;
+  }
+
   @keyframes shine {
     to {
       background-position: 0 0, 100% 0, 70px 36px, 70px 58px, 70px 80px;
@@ -82,7 +84,7 @@
     text-decoration: underline;
   }
 
-  .cardContent {
+  .card-content {
     background: transparent;
     border: none;
     display: grid;
@@ -111,13 +113,7 @@
       border-color: #f2f2f2;
     }
 
-    .card:hover,
-    .card:focus,
-    .card:active {
-      display: block;
-    }
-
-    .cardContent {
+    .card-content {
       grid-template-columns: 24px 1fr 42px;
       padding: 2em;
       cursor: pointer;
