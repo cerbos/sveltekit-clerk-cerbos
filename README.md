@@ -55,8 +55,7 @@ The policies is defined in the `cerbos/policies` directory. Each policy is autho
 ### 1. Clone the repository and install the dependencies
 
 ```bash
-git clone https://github.com/thisdot/cerbos-clerk-and-sveltekit-example.git
-# note: update with final repo
+git clone https://github.com/cerbos/cerbos-clerk-and-sveltekit-example.git
 ```
 
 Then `cd` into the project directory and run `npm install` to install the dependencies.
