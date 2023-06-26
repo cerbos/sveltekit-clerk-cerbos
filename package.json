@@ -30,7 +30,7 @@
     "@clerk/clerk-sdk-node": "4.5.1",
     "@clerk/clerk-js": "^4.15.1",
     "prismjs": "^1.29.0",
-    "svelte": "^3.53.1"
+    "svelte": "^4.0.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "^1.0.0-next.88",
