@@ -2,10 +2,10 @@
   import { setContext } from 'svelte';
   import Header from '$lib/components/Header.svelte';
   import Footer from '$lib/components/Footer.svelte';
-  import { PUBLIC_CLERK_FRONTEND_API } from '$env/static/public';
+  import { PUBLIC_CLERK_PUBLISHABLE_KEY } from '$env/static/public';
   import { createClerkStore } from '$lib/clerk-svelte';
 
-  const clearkStore = createClerkStore(PUBLIC_CLERK_FRONTEND_API);
+  const clearkStore = createClerkStore(PUBLIC_CLERK_PUBLISHABLE_KEY);
   setContext('clerk', clearkStore);
 </script>
 
