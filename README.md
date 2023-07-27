@@ -80,8 +80,8 @@ There is a `.env.local.example` file in the root of the project that you can cop
 
 ```sh
 # .env.local
-PUBLIC_CLERK_FRONTEND_API=your-frontend-api
-CLERK_API_KEY=your-api-key
+PUBLIC_CLERK_PUBLISHABLE_KEY=your-publishable-key
+CLERK_SECRET_KEY=your-secret-key
 ```
 
 The Clerk API keys can be found at the [API Keys page](https://dashboard.clerk.dev/last-active?path=api-keys) in the Clerk dashboard.
