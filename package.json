@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@cerbos/grpc": "^0.14.0",
-    "@clerk/clerk-sdk-node": "4.12.13",
+    "@clerk/clerk-sdk-node": "4.12.15",
     "@clerk/clerk-js": "^4.54.2",
     "prismjs": "^1.29.0",
     "svelte": "^4.1.1"
