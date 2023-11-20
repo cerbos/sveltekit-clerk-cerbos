@@ -48,6 +48,6 @@
     "sass": "^1.64.1",
     "svelte-preprocess": "^5.0.4",
     "typescript": "^5.1.6",
-    "vite": "^4.4.7"
+    "vite": "^5.0.0"
   }
 }
