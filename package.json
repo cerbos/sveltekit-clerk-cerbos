@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@cerbos/grpc": "^0.14.0",
-    "@clerk/clerk-sdk-node": "4.12.21",
+    "@clerk/clerk-sdk-node": "4.12.22",
     "@clerk/clerk-js": "^4.54.2",
     "prismjs": "^1.29.0",
     "svelte": "^4.1.1"
@@ -36,7 +36,7 @@
     "@sveltejs/adapter-auto": "^2.1.0",
     "@sveltejs/kit": "^1.22.3",
     "@sveltejs/vite-plugin-svelte": "^2.4.3",
-    "@types/cookie": "^0.5.1",
+    "@types/cookie": "^0.6.0",
     "@types/prismjs": "^1.26.0",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
