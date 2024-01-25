@@ -109,11 +109,11 @@
 {/if}
 
 <h4>/api/getResources</h4>
-<Prism
-  source={getResourcesApiSource
-    .replaceAll('user.id', `"${id}"`)
-    .replaceAll('locals.session.userId', `"${id}"`)}
-/>
+{#await getResourcesApiSource}
+  <Prism source="// Loading..." />
+{:then responseJSON }
+  <Prism source={responseJSON.replaceAll('user.id', `"${id}"`).replaceAll('locals.session.userId', `"${id}"`)} />
+{/await}
 
 <style lang="scss">
   h4 em {

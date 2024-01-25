@@ -3,7 +3,7 @@ import { CLERK_SECRET_KEY } from '$env/static/private';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler, RequestEvent } from '@sveltejs/kit';
 
-const clerk = createClerkClient({ apiKey: CLERK_SECRET_KEY });
+const clerk = createClerkClient({ secretKey: CLERK_SECRET_KEY });
 
 export const users = clerk.users;
 
