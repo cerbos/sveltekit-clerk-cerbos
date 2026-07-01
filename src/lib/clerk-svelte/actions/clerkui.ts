@@ -1,4 +1,4 @@
-import type Clerk from '@clerk/clerk-js';
+import type { Clerk } from '@clerk/clerk-js';
 
 interface ClerkUIConfig {
   clerk?: Clerk;
